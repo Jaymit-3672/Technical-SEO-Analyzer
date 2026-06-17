@@ -1,115 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical SEO Analyzer</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
+    h1 {
+        color: #333;
+    }
 
-        h1 {
-            color: #333;
-        }
+    form {
+        margin-bottom: 30px;
+    }
 
-        form {
-            margin-bottom: 30px;
-        }
+    input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        font-size: 16px;
+    }
 
-        input[type="text"] {
-            width: 70%;
-            padding: 10px;
-            font-size: 16px;
-        }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    .report {
+        margin-top: 30px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+    }
 
-        .report {
-            margin-top: 30px;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-        }
+    .report h2 {
+        margin-top: 0;
+    }
 
-        .report h2 {
-            margin-top: 0;
-        }
+    .item {
+        margin-bottom: 15px;
+    }
 
-        .item {
-            margin-bottom: 15px;
-        }
+    .label {
+        font-weight: bold;
+    }
 
-        .label {
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
+    /* SEO Score styling */
+    .score {
+        font-size: 28px;
+        font-weight: bold;
+        color: green;
+    }
+</style>
 
-    <h1>Technical SEO Analyzer</h1>
+<h1>Technical SEO Analyzer</h1>
 
-    <form method="POST">
+<form method="POST">
 
-        <input
-            type="text"
-            name="url" 
-            placeholder="Enter Website URL"
-            required
-        >
+    <input
+        type="text"
+        name="url"
+        placeholder="Enter Website URL"
+        required
+    >
 
-        <button type="submit">
-            Analyze
-        </button>
-    </form>
+    <button type="submit">
+        Analyze
+    </button>
 
-    {% if results %}
+</form>
 
-    <div class="report">
+{% if results %}
 
-        <h2>SEO Audit Report</h2>
+<div class="report">
 
-        <div class="item">
-            <span class="label">Title:</span><br>
-            {{ results.title }}
+    <h2>SEO Audit Report</h2>
+
+    <!-- SEO Score received from seo_audit.py -->
+    <div class="item">
+        <span class="label">SEO Score:</span><br>
+
+        <div class="score">
+            {{ results.seo_score }}/100
         </div>
-
-        <div class="item">
-            <span class="label">Meta Description:</span><br>
-            {{ results.meta_description }}
-        </div>
-
-        <div class="item">
-            <span class="label">H1 Tag:</span><br>
-            {{ results.h1 }}
-        </div>
-
-        <div class="item">
-            <span class="label">Total Images:</span>
-            {{ results.total_images }}
-        </div>
-
-        <div class="item">
-            <span class="label">Images Missing ALT Text:</span>
-            {{ results.missing_alt }}
-        </div>
-
     </div>
 
-    {% endif %}
+    <div class="item">
+        <span class="label">Title:</span><br>
+        {{ results.title }}
+    </div>
 
-</body>
-</html>
+    <div class="item">
+        <span class="label">Meta Description:</span><br>
+        {{ results.meta_description }}
+    </div>
 
-<!-- method="POST" sends the URL to Flask.
-name="url" is the key Flask uses to read the input.
-{% if results %} means: show the report only after the form is submitted.
-{{ results.title }} inserts the Python value into the HTML page. -->
+    <div class="item">
+        <span class="label">H1 Tag:</span><br>
+        {{ results.h1 }}
+    </div>
+
+    <div class="item">
+        <span class="label">Total Images:</span>
+        {{ results.total_images }}
+    </div>
+
+    <div class="item">
+        <span class="label">Images Missing ALT Text:</span>
+        {{ results.missing_alt }}
+    </div>
+
+</div>
+
+{% endif %}
