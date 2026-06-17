@@ -58,9 +58,10 @@
     <h1>Technical SEO Analyzer</h1>
 
     <form method="POST">
+
         <input
             type="text"
-            name="url"
+            name="url" 
             placeholder="Enter Website URL"
             required
         >
@@ -107,3 +108,8 @@
 
 </body>
 </html>
+
+<!-- method="POST" sends the URL to Flask.
+name="url" is the key Flask uses to read the input.
+{% if results %} means: show the report only after the form is submitted.
+{{ results.title }} inserts the Python value into the HTML page. -->
