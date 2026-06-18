@@ -16,7 +16,7 @@ A Python-based Technical SEO Analyzer built using Flask and BeautifulSoup.
 * External Link Analysis
 * Unique Link Detection
 * Schema Markup Detection
-* Analysis Time Tracking
+* Pdf Report Generate
 
 ## Tech Stack
 
